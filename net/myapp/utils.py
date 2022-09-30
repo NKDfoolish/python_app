@@ -103,8 +103,9 @@ def find_category_index(category: str) -> int:
 
 
 def is_gpa_valid(gpa_str: str) -> bool:
-    pattern = r'(\d+.\d+)|\d+|.\d+'
-    if re.search(pattern, gpa_str):
+    pattern = r'^(\d+.\d+)|\d+|.\d+$'
+    pattern2 = r'.*\s+.*'
+    if re.match(pattern, gpa_str.strip()) and not re.match(pattern2, gpa_str.strip()):
         return True
     else:
         return False
